@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:37:40 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/05 12:06:30 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:07:48 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ std::ostream&	operator<<(std::ostream& os, const Converter& obj)
 
 char	Converter::_findType(const std::string& literal) const
 {
-	std::cout << literal << std::endl;
 	if (literal.size() == 1 && std::isdigit(literal[0]) == 0)
 		return ('c');
 	if (literal.find_first_not_of("-0123456789") == std::string::npos)
@@ -115,15 +114,9 @@ char	Converter::_findType(const std::string& literal) const
 		if (literal.find('.') != literal.rfind('.'))
 			return (0);
 		if (literal.find('f') == literal.size() - 1)
-		{
-			std::cout << "found float." << std::endl;
 			return ('f');
-		}
 		if (literal.find('f') == std::string::npos)
-		{
-			std::cout << "found double." << std::endl;
 			return ('d');
-		}
 		return (0);
 	}
 	return (0);
