@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ANumber.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:41:32 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/04 19:14:35 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/05 09:05:15 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@
 
 ANumber::ANumber(void)
 {
-	std::cout << "ANumber Default Constructor called." << std::endl;
 	return ;
 }
 
 ANumber::ANumber(const ANumber& other)
 {
-	std::cout << "ANumber Copy Constructor called." << std::endl;
 	*this = other;
 	return ;
 }
@@ -35,7 +33,6 @@ ANumber::ANumber(const ANumber& other)
 
 ANumber::~ANumber(void)
 {
-	std::cout << "ANumber Destructor called." << std::endl;
 	return ;
 }
 
@@ -45,7 +42,6 @@ ANumber::~ANumber(void)
 
 ANumber&	ANumber::operator=(const ANumber& other)
 {
-	std::cout << "ANumber assignment operator called." << std::endl;
 	if (this != &other)
 	{
 		// Copy all attributes

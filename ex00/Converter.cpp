@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:37:40 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/04 19:26:09 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:06:30 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Converter::Converter(const std::string& literal)
 	switch (type)
 	{
 		case 'c':
-			this->_number = new CharNumber(literal.c_str()[1]);
+			this->_number = new CharNumber(literal[0]);
 			break ;
 		case 'i':
 			this->_number = new IntNumber(literal);
@@ -97,24 +97,33 @@ std::ostream&	operator<<(std::ostream& os, const Converter& obj)
 
 char	Converter::_findType(const std::string& literal) const
 {
-	if (literal.size() == 3 && literal[0] == '\'' && literal[2] == '\'')
+	std::cout << literal << std::endl;
+	if (literal.size() == 1 && std::isdigit(literal[0]) == 0)
 		return ('c');
 	if (literal.find_first_not_of("-0123456789") == std::string::npos)
 	{
 		if (literal.rfind('-') == 0)
 			return ('i');
+		if (literal.find('-') == std::string::npos)
+			return ('i');
 		return (0);
 	}
 	if (literal.find_first_not_of("-0123456789.f") == std::string::npos)
 	{
-		if (literal.rfind('-') != 0)
+		if (literal.find('-') != std::string::npos && literal.rfind('-') != 0)
 			return (0);
 		if (literal.find('.') != literal.rfind('.'))
 			return (0);
 		if (literal.find('f') == literal.size() - 1)
+		{
+			std::cout << "found float." << std::endl;
 			return ('f');
+		}
 		if (literal.find('f') == std::string::npos)
+		{
+			std::cout << "found double." << std::endl;
 			return ('d');
+		}
 		return (0);
 	}
 	return (0);
@@ -127,7 +136,7 @@ void	Converter::show(void) const
 	{
 		std::cout << static_cast<CharNumber>(*_number) << std::endl;
 	}
-	catch (std::exception& e)
+	catch (ANumber::ImpossibleConversionException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -136,7 +145,7 @@ void	Converter::show(void) const
 	{
 		std::cout << static_cast<IntNumber>(*_number) << std::endl;
 	}
-	catch (std::exception& e)
+	catch (ANumber::ImpossibleConversionException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -145,7 +154,7 @@ void	Converter::show(void) const
 	{
 		std::cout << static_cast<FloatNumber>(*_number) << std::endl;
 	}
-	catch (std::exception& e)
+	catch (ANumber::ImpossibleConversionException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}
@@ -154,7 +163,7 @@ void	Converter::show(void) const
 	{
 		std::cout << static_cast<DoubleNumber>(*_number) << std::endl;
 	}
-	catch (std::exception& e)
+	catch (ANumber::ImpossibleConversionException& e)
 	{
 		std::cout << e.what() << std::endl;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:37:44 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/04 18:25:01 by aalleon          ###   ########.fr       */
+/*   Updated: 2022/10/05 12:06:04 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <cctype>
 # include "ANumber.hpp"
 # include "CharNumber.hpp"
 # include "IntNumber.hpp"
