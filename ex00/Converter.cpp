@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aalleon <aalleon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:37:40 by aalleon           #+#    #+#             */
-/*   Updated: 2022/10/05 12:07:48 by antoine          ###   ########.fr       */
+/*   Updated: 2022/10/12 13:57:42 by aalleon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,12 @@ char	Converter::_findType(const std::string& literal) const
 			return ('d');
 		return (0);
 	}
+	if (literal == "nanf" || literal == "inff" || literal == "-inff" ||\
+		literal == "+inff")
+		return ('f');
+	if (literal == "nan" || literal == "inf" || literal == "-inf" ||\
+		literal == "+inf")
+		return ('d');
 	return (0);
 }
 
